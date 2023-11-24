@@ -1,5 +1,5 @@
 import React from 'react'
-import SideBar from '../component/SideBar'
+import SideBar from '../component/sideBar/SideBar'
 
 export default function LandingPage() {
   return (
