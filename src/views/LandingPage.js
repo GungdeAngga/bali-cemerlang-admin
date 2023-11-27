@@ -1,5 +1,6 @@
 import React from 'react'
 import SideBar from '../component/sideBar/SideBar'
+import Dashboard from '../component/dashboard/Dashboard'
 
 export default function LandingPage() {
   return (
@@ -17,7 +18,7 @@ export default function LandingPage() {
               <img src='./assets/HEADER.svg' alt='header' className='w-[1500px] pt-5'/>
             </div>
           <div>
-    
+            <Dashboard/>
           </div>
         </div>
       </div>
