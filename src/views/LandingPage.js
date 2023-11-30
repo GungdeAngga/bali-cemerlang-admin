@@ -1,5 +1,7 @@
 import React from 'react'
 import SideBar from '../component/sideBar/SideBar'
+import Dashboard from '../component/dashboard/Dashboard'
+import ReactEditor from '../component/dashboard/ReactEditor'
 
 export default function LandingPage() {
   return (
@@ -14,10 +16,13 @@ export default function LandingPage() {
               <input type='text' placeholder='search' className='w-full outline-none border-none placeholder-VividRed'/>
             </div>
             <div>
-              <img src='./assets/HEADER.svg' alt='header' className='w-[1500px] pt-5'/>
+              <img src='./assets/HEADER.svg' alt='header' className='w-[1500px] pt-3'/>
             </div>
           <div>
-    
+            <Dashboard/>
+          </div>
+          <div>
+            <ReactEditor/>
           </div>
         </div>
       </div>
