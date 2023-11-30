@@ -15,6 +15,7 @@ module.exports = {
       fontFamily: {
         poppins: 'Poppins',
         neue: 'Bebas Neue',
+        balooBhai: 'Baloo Bhai',
       },
     },
   },
