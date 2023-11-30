@@ -1,7 +1,11 @@
 import React from 'react'
+import DataTable from './DataTable';
 
 export default function OfferTable() {
+    
   return (
-    <div>OfferTable</div>
+    <div>
+        <DataTable/>
+    </div>
   )
 }
