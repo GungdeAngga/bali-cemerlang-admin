@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function DataTable() {
+export default function DataTable({dataOffer}) {
     const [rowsPerPage, setRowsPerPage] = useState(5); // Default number of rows per page
     const [currentPage, setCurrentPage] = useState(1);
     const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
@@ -20,27 +20,9 @@ export default function DataTable() {
         console.log(`Delete item with ID ${No}`);
     };
 
-    const data = [
-        { No: 1, Judul: 'Tour to Lempuyang Temple', Isi: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', Jenis:'diskon'},
-        { No: 2, Judul: 'Tour to Nusa Penida', Isi: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', Jenis:'free voucher'},
-        { No: 3, Judul: 'Tour to Ubud', Isi: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', Jenis:'promo'},
-        { No: 4, Judul: 'Tour to Lempuyang Temple', Isi: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', Jenis:'diskon'},
-        { No: 5, Judul: 'Tour to Nusa Penida', Isi: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', Jenis:'free voucher'},
-        { No: 6, Judul: 'Tour to Ubud', Isi: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', Jenis:'promo'},
-        { No: 7, Judul: 'Tour to Lempuyang Temple', Isi: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', Jenis:'diskon'},
-        { No: 8, Judul: 'Tour to Nusa Penida', Isi: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', Jenis:'free voucher'},
-        { No: 9, Judul: 'Tour to Ubud', Isi: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', Jenis:'promo'},
-        { No: 10, Judul: 'Tour to Lempuyang Temple', Isi: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', Jenis:'diskon'},
-        { No: 11, Judul: 'Tour to Nusa Penida', Isi: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', Jenis:'free voucher'},
-        { No: 12, Judul: 'Tour to Ubud', Isi: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', Jenis:'promo'},
-        { No: 13, Judul: 'Tour to Lempuyang Temple', Isi: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', Jenis:'diskon'},
-        { No: 14, Judul: 'Tour to Nusa Penida', Isi: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', Jenis:'free voucher'},
-        { No: 15, Judul: 'Tour to Ubud', Isi: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', Jenis:'promo'},
-        // Add more data items as needed
-      ];
 
       const sortedData = () => {
-        const sorted = [...data];
+        const sorted = [...dataOffer];
         if (sortConfig.key !== null) {
           sorted.sort((a, b) => {
             if (a[sortConfig.key] < b[sortConfig.key]) {
@@ -78,7 +60,31 @@ export default function DataTable() {
         return '';
       };
 
-      const totalPageCount = Math.ceil(data.length / rowsPerPage);
+      const totalPageCount = Math.ceil(dataOffer.length / rowsPerPage);
+
+      const handlePageChange = (pageNumber) => {
+        setCurrentPage(pageNumber);
+      };
+
+      const getVisiblePageNumbers = () => {
+        const visiblePageNumbers = [];
+        const totalPages = totalPageCount;
+        const maxVisiblePages = 1; // Change this value to show more or fewer pages around the current page
+    
+        let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+        let endPage = startPage + maxVisiblePages - 1;
+    
+        if (endPage > totalPages) {
+          endPage = totalPages;
+          startPage = Math.max(1, endPage - maxVisiblePages + 1);
+        }
+    
+        for (let i = startPage; i <= endPage; i++) {
+          visiblePageNumbers.push(i);
+        }
+    
+        return visiblePageNumbers;
+      };
 
   return (
     <div className="overflow-x-auto pt-5">
@@ -114,14 +120,38 @@ export default function DataTable() {
           ))}
         </tbody>
       </table>
-      <div className='flex flex-row'>
-        <div className="">
-        <label htmlFor="rowsPerPage" className="mr-2">
-          Rows per page:
+      <div className='flex flex-row justify-end pt-4'>
+        <div className="flex items-center">
+        <button
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          <img src='./assets/Left.svg' alt='next' className='px-1'/>
+        </button>
+        {getVisiblePageNumbers().map((page) => (
+          <button
+            key={page}
+            onClick={() => handlePageChange(page)}
+            className={`mx-1 px-3 py-1 rounded ${page === currentPage ? 'bg-gray-200 text-black' : 'bg-gray-200'}`}
+          >
+            {page}
+          </button>
+        ))}
+        <button
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPageCount}
+        >
+          <img src='./assets/Right.svg' alt='next' className='px-1'/>
+        </button>
+        Dari {totalPageCount} Halaman
+        </div>
+        <div className="pl-[375px]">
+        <label htmlFor="rowsPerPage" className="mr-1">
+          Menampilkan
         </label>
         <select
           No="rowsPerPage"
-          className="border rounded px-2 py-1"
+          className="border border-gray-600 rounded py-1"
           value={rowsPerPage}
           onChange={handleRowsPerPageChange}
         >
@@ -129,9 +159,9 @@ export default function DataTable() {
           <option value={10}>10</option>
           {/* Add more options for rows per page as needed */}
         </select>
-        </div>
-        <div className="">
-            Page {currentPage} of {totalPageCount}
+        <label htmlFor="rowsPerPage" className="ml-1">
+          item per halaman
+        </label>
         </div>
       </div>
       
