@@ -2,6 +2,7 @@ import React from 'react'
 import SideBar from '../component/sideBar/SideBar'
 import Dashboard from '../component/dashboard/Dashboard'
 import ReactEditor from '../component/dashboard/ReactEditor'
+import SearchMenu from '../component/search/SearchMenu'
 
 export default function LandingPage() {
   return (
@@ -12,8 +13,7 @@ export default function LandingPage() {
       <div className='basis-3/4'>
         <div className='flex flex-col pt-8'>
             <div className='flex border border-VividRed rounded-xl p-2 w-[1500px]'>
-              <img src='./assets/search.svg' alt='search' className='pl-4 pr-7'/>
-              <input type='text' placeholder='search' className='w-full outline-none border-none placeholder-VividRed'/>
+              <SearchMenu/>
             </div>
             <div>
               <img src='./assets/HEADER.svg' alt='header' className='w-[1500px] pt-3'/>
@@ -26,7 +26,6 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
-      
     </div>
   )
 }
