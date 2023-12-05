@@ -2,6 +2,7 @@ import React from 'react'
 import SideBar from '../component/sideBar/SideBar'
 import SearchMenu from '../component/search/SearchMenu'
 import Garis from '../component/garis/Garis'
+import AddOffer from '../component/tambahData/AddOffer'
 
 export default function AddOfferPage() {
   return (
@@ -22,7 +23,7 @@ export default function AddOfferPage() {
         </div>
         <Garis/>
         <div>
-          
+          <AddOffer/>
         </div>
       </div>
     </div>
