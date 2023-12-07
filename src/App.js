@@ -5,6 +5,7 @@ import OfferPage from "./views/OfferPage";
 import AddOfferPage from "./views/AddOfferPage";
 import EditOfferPage from "./views/EditOfferPage";
 import TiketPage from "./views/TiketPage";
+import AddTiketPage from "./views/AddTiketPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/TambahOffer" element={<AddOfferPage/>}/>
       <Route path="/EditOffer" element={<EditOfferPage/>}/>
       <Route path="/Tiket" element={<TiketPage/>}/>
+      <Route path="/TambahTiket" element={<AddTiketPage/>}/>
     </Routes>
   </BrowserRouter>
   );
