@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function DataTable({dataOffer}) {
     const [rowsPerPage, setRowsPerPage] = useState(5); // Default number of rows per page
@@ -95,7 +96,7 @@ export default function DataTable({dataOffer}) {
             <th className="border px-4 py-2" onClick={() => requestSort('Judul')}>Judul Offer{arrow('Judul')}</th>
             <th className="border px-4 py-2" onClick={() => requestSort('Isi')}>Isi Offer{arrow('Isi')}</th>
             <th className="border px-4 py-2" onClick={() => requestSort('Jenis')}>Jenis Offer{arrow('Jenis')}</th>
-            <th className="border px-4 py-2" >Actions</th> {/* New column for actions */}
+            <th className="border px-4 py-2" >Tindakan</th> {/* New column for actions */}
           </tr>
         </thead>
         <tbody>
@@ -106,9 +107,11 @@ export default function DataTable({dataOffer}) {
               <td className="border px-4 py-2">{item.Isi}</td>
               <td className="border px-4 py-2">{item.Jenis}</td>
               <td className="border px-4 py-2">
+              <Link to='/EditOffer'>
                 <button onClick={() => handleEdit(item.id)} className="mr-2 bg-blue-500 text-white px-2 py-1 rounded">
                   Edit
                 </button>
+              </Link>
                 <button onClick={() => handleDelete(item.id)} className="bg-red-500 text-white px-2 py-1 rounded">
                   Delete
                 </button>

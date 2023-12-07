@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react"
 import { useDropzone } from 'react-dropzone'
 
-export default function AddOffer(props) {
+export default function EditOffer(props) {
   const [myFiles, setMyFiles] = useState([])
 
   const onDrop = useCallback(acceptedFiles => {
@@ -70,7 +70,7 @@ export default function AddOffer(props) {
         </div>
       </div>
       <div className='pt-10'>
-        <button className='bg-VividRed text-white w-[1500px] flex items-center justify-center h-10 rounded-xl'>Tambah<img src='./assets/arrow-right.svg' alt='simpan'></img></button>
+        <button className='bg-VividRed text-white w-[1500px] flex items-center justify-center h-10 rounded-xl'>Edit<img src='./assets/arrow-right.svg' alt='simpan'></img></button>
       </div>
     </div>
   )
