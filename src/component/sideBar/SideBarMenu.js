@@ -35,9 +35,9 @@ export default function SideBarMenu() {
                 </a>
             </li>
             <li className='flex'>
-                <a href='/' className='flex'>
+                <a href='/Tiket' className='flex'>
                     <img src='./assets/tiket.svg' alt='tiket' className='pr-3'/>
-                    pakage
+                    Tiket
                 </a>
             </li>
         </ul>
