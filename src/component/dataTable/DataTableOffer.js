@@ -86,47 +86,8 @@ export default function DataTable({dataOffer}) {
         return visiblePageNumbers;
       };
 
-      const [selectedItem, setSelectedItem] = useState(null); //filter day tabel
-      const [isMenuOpen, setMenuOpen] = useState(false);
-
-      const toggleMenu = () => {
-        setMenuOpen(!isMenuOpen);
-      };
-
-      const selectItem = (item) => {
-        setSelectedItem(item);
-        setMenuOpen(false);
-      };
-      
-      const menuItems = ["Minggu lalu", "Bulan lalu", "tahun lalu"];
-
   return (
     <div className="overflow-x-auto pt-5">
-        <div className='pb-4'>
-        <button onClick={toggleMenu} className="rounded-3xl border-VividRed border-2 w-32 h-10 pl-2">
-              <div class='flex'>
-                <img src='./assets/clock.svg' alt='clock' className='pr-2'/>
-                {selectedItem ? selectedItem : "hari ini"}
-                <img src='./assets/upper.svg' alt='clock' className='pl-2'/>
-              </div>
-          </button>
-          {isMenuOpen && (
-            <div class="absolute pt-1">
-              <ul className="p-2 w-32 bg-white border border-VividRed rounded-3xl">
-                {menuItems.map((item, index) => (
-                  <li key={index}>
-                    <button
-                      className="font-poppins block px-2 py-2 hover:bg-blue-200 w-full text-left"
-                      onClick={() => selectItem(item)}
-                    >
-                      {item}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
       <table className="min-w-full table-auto bg-VividRed">
         <thead>
           <tr className='text-white'>
