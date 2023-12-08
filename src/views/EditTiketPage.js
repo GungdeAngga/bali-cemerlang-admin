@@ -4,7 +4,7 @@ import SearchMenu from '../component/search/SearchMenu'
 import Garis from '../component/garis/Garis'
 import EditTiket from '../component/editData/EditTiket'
 
-export default function AddOfferPage() {
+export default function EditTiketPage() {
   return (
     <div className='flex flex-row'>
     <div className='basis-1/5'>

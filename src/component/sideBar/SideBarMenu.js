@@ -17,6 +17,12 @@ export default function SideBarMenu() {
                 </a>
             </li>
             <li className='flex'>
+                <a href='/Promo' className='flex'>
+                    <img src='./assets/promo.svg' alt='news' className='pr-3'/>
+                    Promo
+                </a>
+            </li>
+            <li className='flex'>
                 <a href='/' className='flex'>
                     <img src='./assets/news.svg' alt='news' className='pr-3'/>
                     News

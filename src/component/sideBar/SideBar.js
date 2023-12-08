@@ -12,7 +12,7 @@ export default function SideBar() {
           <div className='px-10'>
             <SideBarMenu/>
           </div>
-          <div className='pt-60 px-16'>
+          <div className='pt-40 px-16'>
             <div className='flex'>
               <img src='./assets/back.svg' alt='back' className='pr-3'/>
               <a href='/' className='text-3xl font-bold text-white'>
