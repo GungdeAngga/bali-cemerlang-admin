@@ -111,7 +111,7 @@ export default function DataTable({dataTiket}) {
               <td className="border px-4 py-2">{item.Keberangkatan}</td>
               <td className="border px-4 py-2">{item.Harga}</td>
               <td className="border px-4 py-2">
-              <Link to='/'>
+              <Link to='/EditTiket'>
                 <button onClick={() => handleEdit(item.id)} className="mr-2 bg-blue-500 text-white px-2 py-1 rounded">
                   Edit
                 </button>

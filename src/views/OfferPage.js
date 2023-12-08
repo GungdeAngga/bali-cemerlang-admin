@@ -24,6 +24,7 @@ export default function OfferPage() {
           <OfferTable/>
         </div>
       </div>
+      <p className='absolute bottom-8 right-10 text-VividRed font-bold'>© 2023 Designed & Develop by CV Maiharta</p>
     </div>
   </div>
   )

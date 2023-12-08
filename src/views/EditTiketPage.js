@@ -2,7 +2,7 @@ import React from 'react'
 import SideBar from '../component/sideBar/SideBar'
 import SearchMenu from '../component/search/SearchMenu'
 import Garis from '../component/garis/Garis'
-import AddTiket from '../component/tambahData/AddTiket'
+import EditTiket from '../component/editData/EditTiket'
 
 export default function AddOfferPage() {
   return (
@@ -19,11 +19,11 @@ export default function AddOfferPage() {
           <div className='flex items-center justify-center pr-5'>
             <a href='/Tiket'><img src='./assets/back1.svg' alt='back' className='w-8 '/></a>
           </div>
-          <p className='text-5xl text-VividRed font-bold'>Tambah Ticket</p>  
+          <p className='text-5xl text-VividRed font-bold'>Edit Ticket</p>  
         </div>
         <Garis/>
         <div>
-          <AddTiket/>
+          <EditTiket/>
         </div>
       </div>
       <p className='absolute bottom-8 right-10 text-VividRed font-bold'>© 2023 Designed & Develop by CV Maiharta</p>
