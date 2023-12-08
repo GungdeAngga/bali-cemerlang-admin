@@ -8,6 +8,7 @@ import TiketPage from "./views/TiketPage";
 import AddTiketPage from "./views/AddTiketPage";
 import EditTiketPage from "./views/EditTiketPage";
 import PromoPage from "./views/PromoPage";
+import AddPromoPage from "./views/AddPromoPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route path="/TambahTiket" element={<AddTiketPage/>}/>
       <Route path="/EditTiket" element={<EditTiketPage/>}/>
       <Route path="/Promo" element={<PromoPage/>}/>
+      <Route path="/TambahPromo" element={<AddPromoPage/>}/>
     </Routes>
   </BrowserRouter>
   );
