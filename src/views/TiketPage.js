@@ -5,7 +5,7 @@ import Garis from '../component/garis/Garis'
 import TiketTable from '../component/tiket/TiketTable'
 import TiketMenu from '../component/tiket/TiketMenu'
 
-export default function OfferPage() {
+export default function TiketPage() {
   return (
     <div className='flex flex-row'>
     <div className='basis-1/5'>

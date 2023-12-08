@@ -4,7 +4,7 @@ import SearchMenu from '../component/search/SearchMenu'
 import Garis from '../component/garis/Garis'
 import AddTiket from '../component/tambahData/AddTiket'
 
-export default function AddOfferPage() {
+export default function AddTiketPage() {
   return (
     <div className='flex flex-row'>
     <div className='basis-1/5'>
