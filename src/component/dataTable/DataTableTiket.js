@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-export default function DataTable({dataTiket}) {
+export default function DataTable({view}) {
     const [rowsPerPage, setRowsPerPage] = useState(5); // Default number of rows per page
     const [currentPage, setCurrentPage] = useState(1);
     const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
@@ -11,19 +11,14 @@ export default function DataTable({dataTiket}) {
         setCurrentPage(1); // Reset to the first page when changing rows per page
     };
 
-    const handleEdit = (No) => {
-        // Implement edit functionality here using the item ID
-        console.log(`Edit item with ID ${No}`);
-    };
-
-    const handleDelete = (No) => {
+    const handleDelete = (id) => {
         // Implement delete functionality here using the item ID
-        console.log(`Delete item with ID ${No}`);
+        console.log(`Delete item with ID ${id}`);
     };
 
 
       const sortedData = () => {
-        const sorted = [...dataTiket];
+        const sorted = [...view];
         if (sortConfig.key !== null) {
           sorted.sort((a, b) => {
             if (a[sortConfig.key] < b[sortConfig.key]) {
@@ -61,7 +56,7 @@ export default function DataTable({dataTiket}) {
         return '';
       };
 
-      const totalPageCount = Math.ceil(dataTiket.length / rowsPerPage);
+      const totalPageCount = Math.ceil(view.length / rowsPerPage);
 
       const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -92,27 +87,27 @@ export default function DataTable({dataTiket}) {
       <table className="min-w-full table-auto bg-VividRed">
         <thead>
           <tr className='text-white'>
-            <th className="border px-4 py-2" onClick={() => requestSort('No')}>No{arrow('No')}</th>
-            <th className="border px-4 py-2" onClick={() => requestSort('Paket')}>Nama Paket{arrow('Paket')}</th>
-            <th className="border px-4 py-2" onClick={() => requestSort('Destinasi')}>Destinasi{arrow('Destinasi')}</th>
-            <th className="border px-4 py-2" onClick={() => requestSort('Tanggal')}>Tanggal{arrow('Tanggal')}</th>
-            <th className="border px-4 py-2" onClick={() => requestSort('Keberangkatan')}>Jam Keberangkatan{arrow('Keberangkatan')}</th>
-            <th className="border px-4 py-2" onClick={() => requestSort('Harga')}>Harga{arrow('Harga')}</th>
+            {/* <th className="border px-4 py-2" onClick={() => requestSort('No')}>No{arrow('No')}</th> */}
+            <th className="border px-4 py-2" onClick={() => requestSort('nama_paket')}>Nama paket{arrow('nama_paket')}</th>
+            <th className="border px-4 py-2" onClick={() => requestSort('destinasi')}>Destinasi{arrow('destinasi')}</th>
+            <th className="border px-4 py-2" onClick={() => requestSort('tanggal')}>Tanggal{arrow('tanggal')}</th>
+            <th className="border px-4 py-2" onClick={() => requestSort('jam_keberangkatan')}>Jam keberangkatan{arrow('jam_keberangkatan')}</th>
+            <th className="border px-4 py-2" onClick={() => requestSort('harga')}>Harga{arrow('harga')}</th>
             <th className="border px-4 py-2" >Tindakan</th> {/* New column for actions */}
           </tr>
         </thead>
         <tbody>
         {sortedAndPaginatedData().map((item, index) => (
             <tr key={item.No} className={index % 2 === 0 ? 'bg-white' : 'bg-red-100'}>
-              <td className="border px-4 py-2">{item.No}</td>
-              <td className="border px-4 py-2">{item.Paket}</td>
-              <td className="border px-4 py-2">{item.Destinasi}</td>
-              <td className="border px-4 py-2">{item.Tanggal}</td>
-              <td className="border px-4 py-2">{item.Keberangkatan}</td>
-              <td className="border px-4 py-2">{item.Harga}</td>
+              {/* <td className="border px-4 py-2">{item.No}</td> */}
+              <td className="border px-4 py-2">{item.nama_paket}</td>
+              <td className="border px-4 py-2">{item.destinasi}</td>
+              <td className="border px-4 py-2">{item.tanggal}</td>
+              <td className="border px-4 py-2">{item.jam_keberangkatan}</td>
+              <td className="border px-4 py-2">{item.harga}</td>
               <td className="border px-4 py-2">
               <Link to='/EditTiket'>
-                <button onClick={() => handleEdit(item.id)} className="mr-2 bg-blue-500 text-white px-2 py-1 rounded">
+                <button className="mr-2 bg-blue-500 text-white px-2 py-1 rounded">
                   Edit
                 </button>
               </Link>
