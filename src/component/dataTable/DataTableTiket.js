@@ -1,7 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios';
+import { baseApi } from '../../utility/API/API';
 
-export default function DataTable({view}) {
+// export default function DataTable({view})
+export default function DataTable() {
+  const [data, setData] = useState();
+  
+  useEffect(() => {
+    axios
+      .get(baseApi + "package")
+      .then((res) => {
+        console.log(res);
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
     const [rowsPerPage, setRowsPerPage] = useState(5); // Default number of rows per page
     const [currentPage, setCurrentPage] = useState(1);
     const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
@@ -17,29 +34,29 @@ export default function DataTable({view}) {
     };
 
 
-      const sortedData = () => {
-        const sorted = [...view];
-        if (sortConfig.key !== null) {
-          sorted.sort((a, b) => {
-            if (a[sortConfig.key] < b[sortConfig.key]) {
-              return sortConfig.direction === 'asc' ? -1 : 1;
-            }
-            if (a[sortConfig.key] > b[sortConfig.key]) {
-              return sortConfig.direction === 'asc' ? 1 : -1;
-            }
-            return 0;
-          });
-        }
-        return sorted;
-      };
+      // const sortedData = () => {
+      //   const sorted = [...view];
+      //   if (sortConfig.key !== null) {
+      //     sorted.sort((a, b) => {
+      //       if (a[sortConfig.key] < b[sortConfig.key]) {
+      //         return sortConfig.direction === 'asc' ? -1 : 1;
+      //       }
+      //       if (a[sortConfig.key] > b[sortConfig.key]) {
+      //         return sortConfig.direction === 'asc' ? 1 : -1;
+      //       }
+      //       return 0;
+      //     });
+      //   }
+      //   return sorted;
+      // };
     
 
-      const sortedAndPaginatedData = () => {
-        const sorted = sortedData();
-        const startIndex = (currentPage - 1) * rowsPerPage;
-        const endIndex = startIndex + rowsPerPage;
-        return sorted.slice(startIndex, endIndex);
-      };
+      // const sortedAndPaginatedData = () => {
+      //   const sorted = sortedData();
+      //   const startIndex = (currentPage - 1) * rowsPerPage;
+      //   const endIndex = startIndex + rowsPerPage;
+      //   return sorted.slice(startIndex, endIndex);
+      // };
 
       const requestSort = (key) => {
         let direction = 'asc';
@@ -56,7 +73,7 @@ export default function DataTable({view}) {
         return '';
       };
 
-      const totalPageCount = Math.ceil(view.length / rowsPerPage);
+      const totalPageCount = Math.ceil(data.length / rowsPerPage); //(view.length / rowsPerPage);//
 
       const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
@@ -97,7 +114,8 @@ export default function DataTable({view}) {
           </tr>
         </thead>
         <tbody>
-        {sortedAndPaginatedData().map((item, index) => (
+        {/* {sortedAndPaginatedData().map((item, index) => ( */}
+        {data.map((item, index) => (
             <tr key={item.No} className={index % 2 === 0 ? 'bg-white' : 'bg-red-100'}>
               {/* <td className="border px-4 py-2">{item.No}</td> */}
               <td className="border px-4 py-2">{item.nama_paket}</td>
